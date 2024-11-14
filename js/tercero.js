@@ -7,23 +7,23 @@
    caso contrario.
    
    */
-   let agregarPersona = (arr, nombre, edad) => {
-    let resultado = arr.filter((p) => p.nombre === nombre);
-    if (resultado.length === 0) {
-        arr.push({nombre: nombre, edad: edad});
-        return true;
-    } else {
+  let persona = []
+  let agregarPersona = (nombre, edad) => {
+    let existe= false
+    persona.forEach(persona => {
+        if (persona.nombre === nombre) {
+            existe = true;
+        }
+    });
+
+    if (existe) {
         return false;
-    }
-};
+        }
+        persona.push({nombre: nombre, eda: edad});
+        return true;
+    };
 
-let personas = [
-    {nombre: "Ana", edad: 20},
-    {nombre: "Daniela", edad: 19},
-    {nombre: "Angel", edad: 19},
-    {nombre: "Sabrina", edad: 20},
-    {nombre: "Ricardo", edad: 18}
-];
-
-console.log(agregarPersona(personas, "Angel", 19));
-console.log(JSON.stringify(personas));
+    let salida = document.getElementById("salida");
+    salida.innerHTML += `Agregar nombre: Ana edad: 20: ${agregarPersona(`Ana`, 20)}`;
+    salida.innerHTML += `<br> Agregar nombre: luis edad: 30: ${agregarPersona(`luis`, 30)}`;
+    salida.innerHTML += `<br> Agregar nombre: carlos edad: 25: ${agregarPersona(`Ana`, 25)}`;
